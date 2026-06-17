@@ -282,6 +282,6 @@ http://localhost:8000/docs
 
 ## 배포 주소
 
-Streamlit: http://EC2_PUBLIC_IP:8501
+Streamlit: http://54.162.138.222:8501
 
-Swagger: http://EC2_PUBLIC_IP:8000/docs
+Swagger: http://54.162.138.222:8000/docs
