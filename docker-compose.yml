@@ -1,0 +1,20 @@
+services:
+
+  backend:
+    build: ./back
+
+    container_name: method-advisor-backend
+
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./front
+
+    container_name: method-advisor-frontend
+
+    ports:
+      - "8501:8501"
+
+    depends_on:
+      - backend
