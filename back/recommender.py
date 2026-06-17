@@ -208,6 +208,73 @@ def recommend(req):
             scores["K-Means"] += 60
 
     # ==================================================
+    # Research Domain
+    # ==================================================
+
+    if req.research_domain == "Business":
+
+        if "Random Forest" in scores:
+            scores["Random Forest"] += 20
+
+        if "XGBoost" in scores:
+            scores["XGBoost"] += 20
+
+        if "LightGBM" in scores:
+            scores["LightGBM"] += 20
+
+    elif req.research_domain == "Finance":
+
+        if "XGBoost" in scores:
+            scores["XGBoost"] += 30
+
+        if "LightGBM" in scores:
+            scores["LightGBM"] += 30
+
+        if "LSTM" in scores:
+            scores["LSTM"] += 20
+
+    elif req.research_domain == "Healthcare":
+
+        if "Random Forest" in scores:
+            scores["Random Forest"] += 20
+
+        if "XGBoost" in scores:
+            scores["XGBoost"] += 20
+
+        if "CNN" in scores:
+            scores["CNN"] += 30
+
+    elif req.research_domain == "Marketing":
+
+        if "K-Means" in scores:
+            scores["K-Means"] += 30
+
+        if "TF-IDF + Logistic Regression" in scores:
+            scores["TF-IDF + Logistic Regression"] += 20
+
+        if "BERT" in scores:
+            scores["BERT"] += 20
+
+    elif req.research_domain == "Social Science":
+
+        if "Logistic Regression" in scores:
+            scores["Logistic Regression"] += 30
+
+        if "Decision Tree" in scores:
+            scores["Decision Tree"] += 20
+
+    elif req.research_domain == "Engineering":
+
+        if "XGBoost" in scores:
+            scores["XGBoost"] += 20
+
+        if "CNN" in scores:
+            scores["CNN"] += 20
+
+        if "Transformer" in scores:
+            scores["Transformer"] += 20
+
+    # ==================================================
     # User Priority
     # ==================================================
 
@@ -306,6 +373,16 @@ def recommend(req):
     else:
         researcher_profile = "⚡ Efficiency-Oriented Researcher"
         
+
+    reason_details = [
+        f"Data Type: {req.data_type}",
+        f"Analysis Goal: {req.analysis_goal}",
+        f"Research Domain: {req.research_domain}",
+        f"User Priority: {req.user_priority}",
+        f"Explainability: {req.explainability_importance}",
+        f"Research Domain: {req.research_domain}"
+    ]
+    
     return {
         "research_topic": req.research_topic,
         "researcher_profile": researcher_profile,
@@ -317,6 +394,8 @@ def recommend(req):
             f"{req.data_type} data, "
             f"{req.analysis_goal} goal, "
             f"{req.user_priority} priority, "
+            f"{req.research_domain} domain, "
             f"and {req.explainability_importance} explainability."
-        )
+        ),
+        "reason_details": reason_details
     }
